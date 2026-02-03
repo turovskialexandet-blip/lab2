@@ -7,4 +7,10 @@ public class Scania extends Car{
         super(2, 550, Color.BLUE, "Scania");
         FlatBedAngle = 0;
     }
+
+    public void RaiseFlatbed(double angle){
+        if (getCurrentSpeed() == 0) {
+            FlatBedAngle = Math.min(angle, 70);
+        }
+    }
 }
