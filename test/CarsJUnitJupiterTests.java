@@ -96,4 +96,14 @@ public class CarsJUnitJupiterTests {
         volvo240.brake(0.3);
         System.out.printf("Volvo240s speed after 2nd brake call: %s.\n", volvo240.getCurrentSpeed());
     }
+
+    @Test
+    public void testRaiseflatbed(){
+        Scania scania = new Scania();
+
+        scania.RaiseFlatbed(50);
+        scania.startEngine();
+        assertEquals(0, scania.getCurrentSpeed());
+    }
+
 }
