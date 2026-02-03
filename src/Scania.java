@@ -8,6 +8,8 @@ public class Scania extends Car{
         FlatBedAngle = 0;
     }
 
+    public double getFlatBedAngle(){ return FlatBedAngle; }
+
     public void RaiseFlatbed(double angle){
         if (getCurrentSpeed() == 0) {
             FlatBedAngle = Math.min(angle, 70);
