@@ -15,4 +15,23 @@ public class Scania extends Car{
             FlatBedAngle = Math.min(angle, 70);
         }
     }
+
+    @Override
+    public void startEngine() {
+        if (getFlatBedAngle() == 0) currentSpeed = 0.1;
+    }
+
+    public double speedFactor(){
+        return getEnginePower() * 0.01;
+    }
+
+    @Override
+    public void incrementSpeed(double amount){
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+    }
+
+    @Override
+    public void decrementSpeed(double amount){
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+    }
 }
