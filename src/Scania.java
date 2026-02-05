@@ -2,11 +2,12 @@ import java.awt.*;
 
 public class Scania extends Car{
     private double FlatBedAngle;
-    private boolean turboOn;
+    private final Saab95 turbo;
     // Uppgift 1
     public Scania(){
         super(2, 550, Color.BLUE, "Scania", "truck");
         FlatBedAngle = 0;
+        turbo = new Saab95();
     }
 
     public double getFlatBedAngle(){ return FlatBedAngle; }
@@ -24,8 +25,14 @@ public class Scania extends Car{
 
     @Override
     public double speedFactor(){
-        double turbo = 1;
-        if(turboOn) turbo = 1.3;
-        return getEnginePower() * 0.01 * turbo;
+        return turbo.speedFactor();
+    }
+
+    public void setTurboOn(){
+        turbo.setTurboOn();
+    }
+
+    public void setTurboOff(){
+        turbo.setTurboOff();
     }
 }
