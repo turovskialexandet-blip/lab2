@@ -5,15 +5,17 @@ public class Car implements Movable {
     private double enginePower; // Engine power of the car
     public double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
-    private String modelName; // The car model
+    private final String modelName; // The car model
     public Point coordinates = new Point(0, 0); // Car coordinates
-    private int state = 1;
+    private int state = 1; // Determines the direction of the car
+    private final String CarVariant;
 
-    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+    public Car(int nrDoors, double enginePower, Color color, String modelName, String CarVariant) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
+        this.CarVariant = CarVariant;
         stopEngine();
     }
 

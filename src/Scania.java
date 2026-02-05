@@ -5,7 +5,7 @@ public class Scania extends Car{
     private boolean turboOn;
     // Uppgift 1
     public Scania(){
-        super(2, 550, Color.BLUE, "Scania");
+        super(2, 550, Color.BLUE, "Scania", "truck");
         FlatBedAngle = 0;
     }
 
