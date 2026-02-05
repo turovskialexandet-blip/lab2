@@ -103,9 +103,9 @@ public class CarsJUnitJupiterTests {
     @Test
     public void testRaiseFlatbedPreventsDriving() {
         Scania scania = new Scania();
-        scania.startEngine();
 
         scania.RaiseFlatbed(50);
+        scania.startEngine();
         scania.gas(1.0);
 
         assertEquals(0, scania.getCurrentSpeed());
