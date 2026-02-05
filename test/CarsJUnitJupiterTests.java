@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CarsJUnitJupiterTests {
     private final Car volvo240 = new Volvo240();
     private final Car saab95 = new Saab95();
+    private final Scania scania = new Scania();
 
     @Test
     public void initTest(){
@@ -14,6 +15,7 @@ public class CarsJUnitJupiterTests {
         System.out.println("___\nTests initialization:");
         System.out.println(volvo240);
         System.out.println(saab95);
+        System.out.println(scania);
     }
 
     @Test
@@ -27,6 +29,7 @@ public class CarsJUnitJupiterTests {
         assertEquals(Color.black,volvo240.getColor());
         assertFalse(saab95.getCurrentSpeed() >0);
         assertFalse(volvo240.getCurrentSpeed() >0);
+        assertTrue(scania.getFlatBedAngle()>=0 && scania.getFlatBedAngle() <=70);
     }
 
     @Test
@@ -98,12 +101,35 @@ public class CarsJUnitJupiterTests {
     }
 
     @Test
-    public void testRaiseflatbed(){
+    public void testRaiseFlatbedPreventsDriving() {
         Scania scania = new Scania();
+        scania.startEngine();
 
         scania.RaiseFlatbed(50);
-        scania.startEngine();
+        scania.gas(1.0);
+
         assertEquals(0, scania.getCurrentSpeed());
+    }
+
+    @Test
+    public void testCanDriveWhenFlatbedIsDown() {
+        Scania scania = new Scania();
+        scania.startEngine();
+
+        scania.gas(1.0);
+
+        assertTrue(scania.getCurrentSpeed() > 0);
+    }
+
+    @Test
+    public void testCannotRaiseFlatbedWhileMoving() {
+        Scania scania = new Scania();
+        scania.startEngine();
+        scania.gas(1.0);
+
+        scania.RaiseFlatbed(50);
+
+        assertEquals(0, scania.getFlatBedAngle());
     }
 
 }
