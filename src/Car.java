@@ -95,10 +95,14 @@ public class Car implements Movable {
         return amount;
     }
 
+    public double speedFactor(){ return 0; }
+
     public void incrementSpeed(double amount) {
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
     public void decrementSpeed(double amount) {
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
     public void gas(double amount) {

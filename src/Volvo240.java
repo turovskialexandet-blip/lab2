@@ -8,18 +8,9 @@ public class Volvo240 extends Car{
         super(4, 100, Color.black, "Volvo240");
         stopEngine();
     }
-    
+
+    @Override
     public double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;
-    }
-
-    @Override
-    public void incrementSpeed(double amount){
-	    currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
-    }
-
-    @Override
-    public void decrementSpeed(double amount){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 }
