@@ -17,31 +17,24 @@ public class Car extends Vehicle {
     }
 
     // getter-function that returns the number of doors a car has
-    public int getNrDoors() {
-        return nrDoors;
-    }
+    public int getNrDoors(){ return nrDoors; }
 
     // getter-function that returns the color of the car
-    public Color getColor() {
-        return color;
-    }
+    public Color getColor(){ return color; }
 
     // setter-function to set the color of the car
-    public void setColor(Color clr) {
-        color = clr;
-    }
+    public void setColor(Color clr){ color = clr; }
 
-    public void incrementSpeed(double amount) { parent.incrementSpeed(amount); }
+    @Override
+    public void incrementSpeed(double amount){ parent.incrementSpeed(amount); }
 
-    public void decrementSpeed(double amount) { parent.decrementSpeed(amount); }
+    public void gas(double amount){ parent.gas(amount); }
 
-    public void gas(double amount) { parent.gas(amount); }
+    public void brake(double amount){ parent.brake(amount); }
 
-    public void brake(double amount) { parent.brake(amount); }
+    public double getEnginePower(){ return parent.getEnginePower(); }
 
-    public double getEnginePower() { return parent.getEnginePower(); }
+    public void startEngine(){ parent.startEngine(); }
 
-    public void startEngine() { parent.startEngine(); }
-
-    public void stopEngine() { parent.stopEngine(); }
+    public void stopEngine(){ parent.stopEngine(); }
 }

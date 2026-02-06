@@ -6,7 +6,7 @@ public class Vehicle implements Movable {
     private int direction_state = 0;
     public double currentSpeed;
 
-    public void move() {
+    public void move(){
         switch (direction_state) {
             case 0: //rakt fram
                 coordinates.y += (int) currentSpeed;
@@ -23,25 +23,25 @@ public class Vehicle implements Movable {
         }
     }
 
-    public void turnLeft() { direction_state = (direction_state - 1) % 4; }
+    public void turnLeft(){ direction_state = (direction_state - 1) % 4; }
 
-    public void turnRight() { direction_state = (direction_state + 1) % 4; }
+    public void turnRight(){ direction_state = (direction_state + 1) % 4; }
 
-    public Point getCoordinates() { return coordinates; }
+    public Point getCoordinates(){ return coordinates; }
 
-    public double getCurrentSpeed() { return currentSpeed; }
+    public double getCurrentSpeed(){ return currentSpeed; }
 
-    public double speedFactor() { return 0; }
+    public double speedFactor(){ return 0; }
 
-    public void incrementSpeed(double amount) {
+    public void incrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() + speedFactor() * amount,0);
     }
 
-    public void decrementSpeed(double amount) {
+    public void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
-    public double Zero_to_One(double amount) {
+    public double Zero_to_One(double amount){
         if (amount <= 0) amount = 0;
         else amount = Math.min(amount, 1);
         System.out.printf("Call from Zero_to_One() function, the amount is %s\n", amount);
