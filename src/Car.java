@@ -1,38 +1,24 @@
 import java.awt.*;
 
-public class Car implements Movable {
-    private int nrDoors; // Number of doors on the car
-    private double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
+public class Car extends Vehicle {
+    private final int nrDoors; // Number of doors on the car
     private Color color; // Color of the car
     private final String modelName; // The car model
-    public Point coordinates = new Point(0, 0); // Car coordinates
-    private int state = 1; // Determines the direction of the car
     private final String CarVariant; // car variants: passenger car, truck, buss
+    private final Motor_vehicle parent = new Motor_vehicle();
 
     public Car(int nrDoors, double enginePower, Color color, String modelName, String CarVariant) {
         this.nrDoors = nrDoors;
-        this.enginePower = enginePower;
+        parent.setEnginePower(enginePower);
         this.color = color;
         this.modelName = modelName;
         this.CarVariant = CarVariant.toLowerCase(); // Added lowercase for them to make it easier with conditions
-        stopEngine();
+        parent.stopEngine();
     }
 
     // getter-function that returns the number of doors a car has
     public int getNrDoors() {
         return nrDoors;
-    }
-
-    // getter-function that returns the engine power of the car
-    public double getEnginePower() {
-        return enginePower;
-    }
-
-    // getter-function that returns the current speed of the car
-    public double getCurrentSpeed() {
-        if (currentSpeed <= 0) return currentSpeed = 0;
-        else return Math.min(currentSpeed, enginePower);
     }
 
     // getter-function that returns the color of the car
@@ -45,75 +31,17 @@ public class Car implements Movable {
         color = clr;
     }
 
-    // function that starts the engine of the car
-    public void startEngine() {
-        currentSpeed = 0.1;
-    }
+    public void incrementSpeed(double amount) { parent.incrementSpeed(amount); }
 
-    // function that stops the engine of the car
-    public void stopEngine() {
-        currentSpeed = 0;
-    }
+    public void decrementSpeed(double amount) { parent.decrementSpeed(amount); }
 
-    // interface
-    // potential changes are expected for these methods
-    public void move() {
-        switch (state) {
-            case 1: //rakt fram
-                coordinates.y += (int) currentSpeed;
-                break;
-            case 2: //går åt höger
-                coordinates.x += (int) currentSpeed;
-                break;
-            case 3: //går ner
-                coordinates.y -= (int) currentSpeed;
-                break;
-            case 4: //går åt vänster
-                coordinates.x -= (int) currentSpeed;
-                break;
-        }
-    }
+    public void gas(double amount) { parent.gas(amount); }
 
-    public void turnLeft() {
-        if (state <= 1) {
-            state = 4;
-        } else {
-            state -= 1;
-        }
-    }
+    public void brake(double amount) { parent.brake(amount); }
 
-    public void turnRight() {
-        if (state >= 4) {
-            state = 1;
-        } else {
-            state += 1;
-        }
-    }
+    public double getEnginePower() { return parent.getEnginePower(); }
 
-    public double Zero_to_One(double amount) {
-        if (amount <= 0) amount = 0;
-        else amount = Math.min(amount, 1);
-        System.out.printf("Call from Zero_to_One() function, the amount is %s\n", amount);
-        return amount;
-    }
+    public void startEngine() { parent.startEngine(); }
 
-    public double speedFactor(){ return 0; }
-
-    public void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
-    }
-
-    public void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
-    }
-
-    public void gas(double amount) {
-        amount = Zero_to_One(amount);
-        incrementSpeed(amount);
-    }
-
-    public void brake(double amount) {
-        amount = Zero_to_One(amount);
-        decrementSpeed(amount);
-    }
+    public void stopEngine() { parent.stopEngine(); }
 }
