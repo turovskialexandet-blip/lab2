@@ -1,11 +1,11 @@
 import java.awt.*;
 
-public class Scania extends Car{
+public class Scania extends Truck<Object>{
     private final Flatbed flatbed;
     private final TurboCharger turboCharger;
-    // Uppgift 1
+
     public Scania(){
-        super(2, 550, Color.BLUE, "Scania", "truck");
+        super(2, 550, Color.BLUE, "Scania");
         flatbed = new Flatbed();
         turboCharger = new TurboCharger();
     }

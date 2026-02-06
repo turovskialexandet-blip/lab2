@@ -4,14 +4,12 @@ public class Car extends Motor_vehicle {
     private final int nrDoors; // Number of doors on the car
     private Color color; // Color of the car
     private final String modelName; // The car model
-    private final String CarVariant; // car variants: passenger car, truck, buss
 
-    public Car(int nrDoors, double enginePower, Color color, String modelName, String CarVariant) {
+    public Car(int nrDoors, double enginePower, Color color, String modelName) {
         this.nrDoors = nrDoors;
         setEnginePower(enginePower);
         this.color = color;
         this.modelName = modelName;
-        this.CarVariant = CarVariant.toLowerCase(); // Added lowercase for them to make it easier with conditions
         stopEngine();
     }
 
