@@ -1,19 +1,18 @@
 import java.awt.*;
 
-public class Car extends Vehicle {
+public class Car extends Motor_vehicle {
     private final int nrDoors; // Number of doors on the car
     private Color color; // Color of the car
     private final String modelName; // The car model
     private final String CarVariant; // car variants: passenger car, truck, buss
-    private final Motor_vehicle parent = new Motor_vehicle();
 
     public Car(int nrDoors, double enginePower, Color color, String modelName, String CarVariant) {
         this.nrDoors = nrDoors;
-        parent.setEnginePower(enginePower);
+        setEnginePower(enginePower);
         this.color = color;
         this.modelName = modelName;
         this.CarVariant = CarVariant.toLowerCase(); // Added lowercase for them to make it easier with conditions
-        parent.stopEngine();
+        stopEngine();
     }
 
     // getter-function that returns the number of doors a car has
@@ -24,17 +23,4 @@ public class Car extends Vehicle {
 
     // setter-function to set the color of the car
     public void setColor(Color clr){ color = clr; }
-
-    @Override
-    public void incrementSpeed(double amount){ parent.incrementSpeed(amount); }
-
-    public void gas(double amount){ parent.gas(amount); }
-
-    public void brake(double amount){ parent.brake(amount); }
-
-    public double getEnginePower(){ return parent.getEnginePower(); }
-
-    public void startEngine(){ parent.startEngine(); }
-
-    public void stopEngine(){ parent.stopEngine(); }
 }

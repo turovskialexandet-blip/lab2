@@ -1,33 +1,31 @@
 import java.awt.*;
 
 public class Scania extends Car{
-    private final Motor_vehicle turbo;
     private final Flatbed flatbed;
-    private final Saab95 speedFactor;
+    private final TurboCharger turboCharger;
     // Uppgift 1
     public Scania(){
         super(2, 550, Color.BLUE, "Scania", "truck");
-        turbo = new Motor_vehicle();
         flatbed = new Flatbed();
-        speedFactor = new Saab95();
+        turboCharger = new TurboCharger();
     }
 
-    public double getFlatBedAngle() { return flatbed.getFlatBedAngle(); }
+    public double getFlatBedAngle(){ return flatbed.getFlatBedAngle(); }
 
-    public void RaiseFlatbed(double angle) { flatbed.RaiseFlatbed(angle); }
-    public void LowerFlatbed(double angle) { flatbed.LowerFlatbed(angle); }
+    public void RaiseFlatbed(double angle){ flatbed.RaiseFlatbed(angle); }
+    public void LowerFlatbed(double angle){ flatbed.LowerFlatbed(angle); }
 
     @Override
-    public void startEngine() {
-        if (getFlatBedAngle() == 0) currentSpeed = 0.1;
-    }
+    public void startEngine(){ if (getFlatBedAngle() == 0) currentSpeed = 0.1; }
 
     @Override
     public double speedFactor(){
-        return speedFactor.speedFactor();
+        double turbo = 1;
+        if(turboCharger.getTurbo()) turbo = 1.3;
+        return getEnginePower() * 0.01 * turbo;
     }
 
-    public void setTurboOn() { turbo.setTurboOn(); }
+    public void setTurboOn(){ turboCharger.setTurboOn(); }
 
-    public void setTurboOff() { turbo.setTurboOff(); }
+    public void setTurboOff(){ turboCharger.setTurboOff(); }
 }

@@ -1,10 +1,10 @@
 public class Motor_vehicle extends Vehicle {
     private double enginePower;
-    private boolean turboOn;
+    //private boolean turboOn;
 
     public double getEnginePower(){ return enginePower; }
 
-    public boolean getTurbo(){ return turboOn; }
+    //public boolean getTurbo(){ return turboOn; }
 
     public void startEngine(){ currentSpeed = 0.1; }
 
@@ -12,9 +12,9 @@ public class Motor_vehicle extends Vehicle {
 
     public void setEnginePower(double amount){ enginePower = amount; }
 
-    public void setTurboOn(){ turboOn = true; }
+    //public void setTurboOn(){ turboOn = true; }
 
-    public void setTurboOff(){ turboOn = false; }
+    //public void setTurboOff(){ turboOn = false; }
 
     @Override
     public void incrementSpeed(double amount){ currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()); }
