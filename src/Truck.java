@@ -20,6 +20,8 @@ public class Truck <Cargo> extends Motor_vehicle{
     // getter-function that returns the number of doors a car has
     public int getNrDoors(){ return nrDoors; }
 
+    public List<Cargo> getTruckCargo(){ return truckCargo; }
+
     // getter-function that returns the color of the car
     public Color getColor(){ return color; }
 
