@@ -35,9 +35,11 @@ public class MAN extends Truck<Car> {
         }
     }
 
-    //Höjer rampen (kan alltid göras)
+    //Höjer rampen om Man står stilla
     public void raiseRamp() {
-        flatbed.RaiseRamp();
+        if (getCurrentSpeed()==0) {
+            flatbed.RaiseRamp();
+        }
     }
 
     //Körregler: får inte köra om rampen är nere
