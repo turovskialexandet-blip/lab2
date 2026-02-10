@@ -12,8 +12,20 @@ public class Scania extends Truck<Object>{
 
     public double getFlatBedAngle(){ return flatbed.getFlatBedAngle(); }
 
-    public void RaiseFlatbed(double angle){ flatbed.RaiseFlatbed(angle); }
+    public void RaiseFlatbed(double angle) {
+        if (getCurrentSpeed() == 0) {
+            flatbed.RaiseFlatbed(angle);
+        }
+    }
+
     public void LowerFlatbed(double angle){ flatbed.LowerFlatbed(angle); }
+
+    @Override
+    public void gas(double amount) {
+        if (getFlatBedAngle() == 0) {
+            super.gas(amount);
+        }
+    }
 
     @Override
     public void startEngine(){ if (getFlatBedAngle() == 0) currentSpeed = 0.1; }

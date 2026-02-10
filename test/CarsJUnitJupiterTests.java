@@ -61,20 +61,20 @@ public class CarsJUnitJupiterTests {
             volvo240.turnLeft();
             volvo240.move();
         }
-        Point cordVnow = new Point(volvo240.coordinates.x, volvo240.coordinates.y);
+        Point cordVnow = new Point(volvo240.getCoordinates().x, volvo240.getCoordinates().y);
         assertNotSame(new Point(0, 0), cordVnow);
 
         for (int i = 1; i < 3; i++){
             volvo240.decrementSpeed(i);
             volvo240.move();
-            assertNotSame(cordVnow, volvo240.coordinates);
+            assertNotSame(cordVnow, volvo240.getCoordinates());
         }
 
         volvo240.stopEngine();
         assertEquals(0, volvo240.getCurrentSpeed());
-        Point befcord = volvo240.coordinates;
+        Point befcord = volvo240.getCoordinates();
         volvo240.move();
-        assertSame(befcord, volvo240.coordinates);
+        assertSame(befcord, volvo240.getCoordinates());
 
     }
 
