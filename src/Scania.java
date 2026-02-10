@@ -14,6 +14,8 @@ public class Scania extends Truck<Object>{
 
     public void RaiseFlatbed(double angle) {
         if (getCurrentSpeed() == 0) {
+            // då du har redan lagt till detta vilkoret i Scania och MAN så tog jag brot det
+            // från Flatbed.java
             flatbed.RaiseFlatbed(angle);
         }
     }
