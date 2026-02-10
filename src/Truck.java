@@ -6,7 +6,7 @@ public class Truck <Cargo> extends Motor_vehicle{
     private final int nrDoors; // Number of doors on the car
     private Color color; // Color of the vehicle
     private final String modelName; // The name model
-    private List<Cargo> truckCargo;
+    private final List<Cargo> truckCargo;
 
     public Truck(int nrDoors, double enginePower, Color color, String modelName){
         this.nrDoors = nrDoors;

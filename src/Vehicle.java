@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Vehicle implements Movable {
-    private Point coordinates = new Point(0, 0);
+    private final Point coordinates = new Point(0, 0);
     private int direction_state = 0;
     public double currentSpeed;
 
